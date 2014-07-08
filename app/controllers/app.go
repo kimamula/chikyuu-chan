@@ -41,7 +41,7 @@ func (c Application) getUser(username string) *models.User {
 
 func (c Application) Index() revel.Result {
 	if c.connected() != nil {
-		return c.Redirect(routes.Hotels.Index())
+		return c.Redirect(routes.Map.Index())
 	}
 	c.Flash.Error("Please log in first")
 	return c.Render()
@@ -87,7 +87,7 @@ func (c Application) Login(username, password string, remember bool) revel.Resul
 				c.Session.SetNoExpiration()
 			}
 			c.Flash.Success("Welcome, " + username)
-			return c.Redirect(routes.Hotels.Index())
+			return c.Redirect(routes.Map.Index())
 		}
 	}
 

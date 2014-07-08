@@ -2,9 +2,9 @@
 
 <html>
   <head>
-    <title>{{.title}}</title>
+    <title>{{msg . "app.name"}} {{.title}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" type="text/css" media="screen" href="/public/css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/public/css/bootstrap.css">
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
     {{range .moreStyles}}
       <link rel="stylesheet" type="text/css" href="/public/{{.}}">
@@ -17,11 +17,11 @@
   </head>
   <body>
 
-    <div id="header">
-      <h1>revel framework booking demo</h1>
+    <div id="header" class="container">
+      <h1>{{msg . "app.name"}} {{msg . "app.version"}}</h1>
       {{if .user}}
         <div id="options">
-          Connected as {{.user.Username}}
+          {{msg . "app.greeting" .user.Username}}
           |
           <a href="{{url "Hotels.Index"}}">Search</a>
           |

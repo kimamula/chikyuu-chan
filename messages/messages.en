@@ -1,0 +1,6 @@
+app.name=Chikyuu-chan
+app.version=β
+app.greeting=Hello %s!
+
+view.login.title=Login
+view.map.title=Current location

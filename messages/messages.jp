@@ -1,0 +1,6 @@
+app.name=地球ちゃん
+app.version=β
+app.greeting=こんにちは %sさん!
+
+view.login.title=ログイン
+view.map.title=現在地

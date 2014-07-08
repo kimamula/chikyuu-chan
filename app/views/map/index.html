@@ -1,0 +1,38 @@
+{{set . "title" (msg . "view.map.title")}}
+{{template "header.html" .}}
+<script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCi4Yv8Mt9ABG8kUfSVcpOjIF_1mvcpbnA&sensor=true">
+</script>
+<script type="text/javascript">
+    (function () {
+      var GoogleMapInitializer = (function() {
+        return {
+          "initialize" : function (dom_id) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+              var current_pos = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+              var map = new google.maps.Map(document.getElementById(dom_id), {
+                center: current_pos,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 17
+              });
+              // 現在位置にピンをたてる
+              var current_marker = new google.maps.Marker({
+                position: current_pos
+              });
+              current_marker.setMap(map);
+            }, function() {
+              // gps 取得失敗
+              alert('GPSデータを取得できませんでした');
+              return false;
+            });
+          }
+        }
+      })();
+      jQuery(function() {
+        GoogleMapInitializer.initialize('jsMapCanvas');
+      });
+    })();
+    </script>
+<div id="jsMapCanvas" style="width:500px; height:300px"></div>
+
+{{template "footer.html" .}}
